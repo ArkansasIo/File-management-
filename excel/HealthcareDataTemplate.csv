@@ -1,0 +1,2 @@
+MedicalRecordNumber,GivenName,FamilyName,DateOfBirth,Phone,Email,CountryCode
+SYNTH-0001,Example,Patient,1980-01-01,555-0100,example.invalid@example.test,CA
