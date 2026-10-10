@@ -1,0 +1,1 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><TargetFramework>net8.0</TargetFramework></PropertyGroup><ItemGroup><ProjectReference Include="..\DentalMaintenance.Core\DentalMaintenance.Core.csproj"/><PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11"/><PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2"/></ItemGroup></Project>
