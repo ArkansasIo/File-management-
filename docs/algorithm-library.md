@@ -1,0 +1,3 @@
+# Algorithm library
+
+The catalog describes algorithm family, expected complexity, and implementation status. Implemented examples include bubble sort, binary search, Euclidean GCD, and required-field validation. Other algorithms are reference/catalog entries only until code and tests are added. Algorithms in this project must not make clinical decisions; clinical decision support requires separate clinical validation, governance, and monitoring.
