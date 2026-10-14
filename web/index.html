@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browser workspace for the DentalMaintenance healthcare workstation API.">
+  <title>CareDesk — Healthcare Workspace</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="CareDesk home"><span class="brand-mark">C</span><span><strong>CareDesk</strong><small>Healthcare workspace</small></span></a>
+      <p class="nav-label">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span>▦</span> Overview</button>
+        <button class="nav-item" data-view="patients"><span>♙</span> Patient directory</button>
+        <button class="nav-item" data-view="documents"><span>▤</span> Documents</button>
+        <button class="nav-item" data-view="tools"><span>⌘</span> Clinical tools</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="status-dot"></span><span id="connection-label">API not checked</span><button id="check-api" class="text-button">Check</button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">WORKSPACE / <span id="breadcrumb">OVERVIEW</span></p><h1 id="page-title">Overview</h1></div><div class="top-actions"><label class="api-label" for="api-url">API base URL</label><input id="api-url" type="url" placeholder="https://your-api.example.com" autocomplete="url"><button id="save-api" class="button secondary">Connect</button></div></header>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <section id="view-dashboard" class="view">
+        <div class="welcome"><div><p class="eyebrow light">CARE OPERATIONS</p><h2>Your workspace, at a glance.</h2><p>Connect the API to browse live records. This interface does not store patient information in the browser.</p></div><div class="welcome-icon" aria-hidden="true">✳</div></div>
+        <div class="stats-grid"><article class="stat-card"><span class="stat-label">API STATUS</span><strong id="api-status">Not connected</strong><small>Backend connection</small></article><article class="stat-card"><span class="stat-label">PATIENT RESULTS</span><strong id="patient-count">—</strong><small>Current directory query</small></article><article class="stat-card"><span class="stat-label">DATA MODE</span><strong>Live API</strong><small>No local patient cache</small></article></div>
+        <div class="content-grid"><article class="panel"><div class="panel-heading"><div><h3>Quick actions</h3><p>Jump into a workspace</p></div></div><div class="quick-actions"><button data-view="patients" class="quick-action"><span class="action-icon">♙</span><span><strong>Patient directory</strong><small>Search active patient records</small></span><span>→</span></button><button data-view="documents" class="quick-action"><span class="action-icon">▤</span><span><strong>Document workspace</strong><small>Review document integration status</small></span><span>→</span></button><button data-view="tools" class="quick-action"><span class="action-icon">⌘</span><span><strong>Clinical tools</strong><small>Browse available API tools</small></span><span>→</span></button></div></article><article class="panel"><div class="panel-heading"><div><h3>Deployment checklist</h3><p>Before connecting real records</p></div></div><ul class="check-list"><li>Deploy the API over HTTPS</li><li>Set exact CORS origins for this website</li><li>Implement authentication and role-based access</li><li>Enable audit logging and secure document storage</li></ul><p class="warning-note">Development scaffold only. Do not use with real patient data until security controls have been implemented and independently assessed.</p></article></div>
+      </section>
+      <section id="view-patients" class="view" hidden>
+        <div class="section-intro"><div><h2>Patient directory</h2><p>Search active records from the connected API.</p></div></div>
+        <form id="patient-search" class="search-row"><label class="sr-only" for="patient-query">Search by name or medical record number</label><input id="patient-query" type="search" maxlength="100" placeholder="Search name or medical record number"><button class="button primary" type="submit">Search</button><button id="clear-search" class="button secondary" type="button">Clear</button></form>
+        <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>Patient</th><th>Record number</th><th>Status</th></tr></thead><tbody id="patient-rows"><tr><td colspan="3" class="empty-cell">Connect the API to load patient records.</td></tr></tbody></table></div><p class="table-foot" id="patient-summary">No request made.</p></div>
+      </section>
+      <section id="view-documents" class="view" hidden><div class="panel empty-panel"><span class="large-icon">▤</span><h2>Document workspace</h2><p>The repository contains document and audit database schemas, but a secure document upload/download API is not yet implemented. This screen intentionally does not simulate file storage.</p><div class="feature-tags"><span>Metadata</span><span>Audit trail</span><span>Access control required</span></div></div></section>
+      <section id="view-tools" class="view" hidden><div class="panel empty-panel"><span class="large-icon">⌘</span><h2>Clinical tools</h2><p>Connect to the backend to list supported algorithm entries. Reference-only algorithms must not be treated as clinical advice.</p><button id="load-tools" class="button primary">Load API tools</button><div id="tools-output" class="tool-list"></div></div></section>
+      <footer>CareDesk browser client <span>•</span> API-driven <span>•</span> Do not enter real patient data into an unapproved deployment.</footer>
+    </main>
+  </div>
+</body>
+</html>
